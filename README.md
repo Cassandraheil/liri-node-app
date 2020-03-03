@@ -2,9 +2,9 @@
 
 The Problem-
     Like all apps, this app has a purpose; to solve a problem. A big problem with today's society is the overload of data spread sporatically across the internet. Conveniently, this app brings together information about movies, songs, artists, and the artists' events into one easy to use package.
-2. Give a high-level overview of how the app is organized
+
 An Overview-
-    This app has many files intertwined together to make it function properly....
+    This app has many files intertwined together to make it function properly. The file package.json is used to hold metadata vital to the app. This file holds dependencies and passes information when need be. The main file, liri.js, is where all the magic happens. The api's are called, the user input is grabbed, and all the pertinent information is displayed when called upon by the user. The keys.js file and .env file hold elements necessary for the Spotify api to be called. 
 
 Instructions-
     1)open the app in your terminal
@@ -23,9 +23,9 @@ Screenshot--
 
 Link-
     https://cassandraheil.github.io/liri-node-app/
-6. Clearly list the technologies used in the app
+
 Technologies-
-    This app utilizes a variety of high-level resources used by coders daily...
-7. State your role in the app development
+    This app utilizes a variety of high-level resources used by coders daily. Multiple trademark APi's were called like the Spotify api, the OMDB api, and the Bands In Town api. Axios was a useful tool in the process of making this app. Axios allowed us to call api's through Node and display them in the terminal for conveinent use.
+
 My Part-
-    This app and most modern apps could not happen without collaboration and the openness of the coding community. 
+    This app and most modern apps could not happen without collaboration and the openness of the coding community. Using the resources out there I was able to combine them, add some logic using javascript, and display this information with Node through the terminal. 

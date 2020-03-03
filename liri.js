@@ -16,14 +16,16 @@ secArg = secArg.join(" ")
 
 function spotify(){
 //--------------Spotify aPI--------------------------
-
 var spotify = new Spotify(keys.spotify);
 spotify.search({ type: 'track', query: secArg })
 .then(function(response) {
-    console.log("Artist", response.tracks.items[0]); // response path
-    // console.log("Song Name: ", response);
-    // console.log("Preview the song?.... ", response);
-    // console.log("The Album: ", response.album.artist);
+    for (i=0; i <20; i++){
+    console.log("Artist: ", response.tracks.items[i].artists.name); //got this to work finally
+    console.log("Song Name: ", response.tracks.items[i].name);
+    console.log("Preview the song: ", response.tracks.items[i].preview_url);
+    console.log("Album Name: ", response.tracks.items[i].album.name);
+    console.log("--------")
+    }
 })
 .catch(function(err) {
     console.log(err);
@@ -57,13 +59,13 @@ function omdbAPI(movie){
 });//   ------omdbAPI until here-------------------------
 };
 
-function bandsinTown(){
+function bandsinTown(artist){
     //---------------bands in town API-------------
-    axios.get("https://rest.bandsintown.com/artists/" + secArg + "/events?app_id=codingbootcamp").then(
+    axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
         function(response) {
-            console.log("The artist's name is" + response.name);
-            // console.log("venue location" + response.url);
-            // console.log("date of event(MM/DD/YYY)" + response);
+            console.log("The artist's name is " + response.venue[0]);
+            // console.log("venue location " + response.url);
+            // console.log("date of event: (MM/DD/YYY) " + response.upcoming_event_count);
         })  .catch(function(error) {
             if (error.response) {
                 console.log("---------------Data---------------");
@@ -98,10 +100,10 @@ else if (firstArg ==="movie-this"){
 
 //calling the Bands in Town function, or the default
 else if (firstArg === "concert-this" && secArg === ""){
-    secArg === "Ariana Grande"
+    bandsinTown("Ariana Grande")
 }
 else if (firstArg === "concert-this"){
-    bandsinTown();
+    bandsinTown(secArg);
 }
 
 //calling the random txt file
@@ -110,8 +112,7 @@ else if (firstArg === "do-what-it-says"){
     fs.readFile("random.txt", "utf8", function(error, data) {
         if (error) {return console.log(error);}
             
-            var dataArr = data.split(",");          // data.split(""""), then remove the index of where they might be          
-            //remove.Item("''", dataArr)                 how to get rid of quotations???
+            var dataArr = data.split(",");
             firstArg =dataArr[0];
             secArg =dataArr[1];
 
