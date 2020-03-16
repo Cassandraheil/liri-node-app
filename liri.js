@@ -20,7 +20,7 @@ var spotify = new Spotify(keys.spotify);
 spotify.search({ type: 'track', query: secArg })
 .then(function(response) {
     for (i=0; i <20; i++){
-    console.log("Artist: ", response.tracks.items[i].artists.name); //got this to work finally
+    console.log("Artist: ", response.tracks.items[i].artists[0].name); //got this to work finally
     console.log("Song Name: ", response.tracks.items[i].name);
     console.log("Preview the song: ", response.tracks.items[i].preview_url);
     console.log("Album Name: ", response.tracks.items[i].album.name);
@@ -63,9 +63,9 @@ function bandsinTown(artist){
     //---------------bands in town API-------------
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
         function(response) {
-            console.log("The artist's name is " + response.venue[0]);
-            // console.log("venue location " + response.url);
-            // console.log("date of event: (MM/DD/YYY) " + response.upcoming_event_count);
+            console.log("The artist's name is ", response.data[0]);
+            console.log("venue location ", response.data[0]);
+            console.log("date of event: (MM/DD/YYY) ", response.data[0]);
         })  .catch(function(error) {
             if (error.response) {
                 console.log("---------------Data---------------");
@@ -125,7 +125,6 @@ else if (firstArg === "do-what-it-says"){
             }
             else if (firstArg ==="movie-this"){
                 omdbAPI(secArg);
-                console.log("jk this one is happening")
             }
             else if (firstArg === "concert-this"){
                 bandsinTown();
@@ -137,12 +136,4 @@ else if (firstArg === "do-what-it-says"){
         console.log("sorry, retype that. Make sure you spelled everything correctly.");
     }
 
-
-
-//-----get the last elements 
-// var Arr = [];
-// var argument=["node", "filename", userinput]
-// for (var i = 2; < nodeArg.length; i++){
-//     Arr.push(argument[i]);
-// }
 

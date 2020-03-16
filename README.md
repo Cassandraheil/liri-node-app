@@ -19,7 +19,9 @@ Instructions-
     exp: 'node liri.js concert-this Ariana Grande'
     6)the app then outputs information based on your input. to get information on a different topic just follow steps 2-5 again
 
-Screenshot--
+Screenshot-- 
+![Getting Started](./images/)
+![Getting Started](./images)
 
 Link-
     https://cassandraheil.github.io/liri-node-app/
