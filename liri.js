@@ -63,9 +63,9 @@ function bandsinTown(artist){
     //---------------bands in town API-------------
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
         function(response) {
-            console.log("The artist's name is ", response.data[0]);
-            console.log("venue location ", response.data[0]);
-            console.log("date of event: (MM/DD/YYY) ", response.data[0]);
+            console.log("Artist's Name: ", response.data[0].artist.name);
+            console.log("Venue Location: ", response.data[0].venue.name, "in", response.data[0].venue.country, response.data[0].venue.region + ",", response.data[0].venue.city);
+            console.log("Date of Event: (YYYY/MM/DD) ", response.data[0].datetime);
         })  .catch(function(error) {
             if (error.response) {
                 console.log("---------------Data---------------");
